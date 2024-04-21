@@ -1,0 +1,54 @@
+<mvc:View controllerName="gbas.developer.uploadfiles.controller.Home"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+        <content>
+        	<Table 
+				id="idFilesTable"
+                mode="SingleSelect"
+				items="{fileList>/d/results}"
+				growing="true"
+				growingThreshold="25"
+			>
+				<headerToolbar>
+					<OverflowToolbar id="tableToolbar">
+						<Title id="searchToolbarTitle" text="{i18n>searchToolbarTitle}"/>
+						<ToolbarSpacer id="toolbarSpacer01"/>
+						<Button id="newFileButton" text="{i18n>buttonNewFile}" press="onNewFile"/>
+						<Button id="refreshButton" text="{i18n>buttonRefresh}" press="onRefresh"/>
+						<Button id="downloadButton" text="{i18n>buttonDownload}" press="onDownload"/>
+						<Button id="downloadZipButton" text="{i18n>buttonDownloadZIP}" press="onDownloadZip"/>
+						<ToolbarSpacer id="toolbarSpacer02"/>
+						<SearchField id="searchFile" width="20%" search="onSearch"/>
+						<Button id="sortButton" tooltip="{i18n>tooltipSort}" icon="sap-icon://sort" press="onSort"/>
+						<Button id="groupButton" tooltip="{i18n>tooltipGroup}" icon="sap-icon://group-2" press="onGroup"/>
+					</OverflowToolbar>
+				</headerToolbar>
+				<columns>
+					<Column id="columnId">
+						<Text id="columnIdText" text="{i18n>columnId}" />
+					</Column>
+					<Column id="columnFilename">
+						<Text id="columnFilenameText" text="{i18n>columnFilename}" />
+					</Column>
+					<Column id="columnMimeType">
+						<Text id="columnMimeTypeText" text="{i18n>columnMimeType}" />
+					</Column>
+					<Column id="columnDatestamp">
+						<Text id="columnDatestampText" text="{i18n>columnDatestamp}" />
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem id="tableItems">
+						<cells>
+							<ObjectIdentifier id="columnIdValue" title="{fileList>Id}"/>
+							<Text id="columnFilenameValue" text="{fileList>Filename}"/>
+							<Text id="columnMimeTypeValue" text="{fileList>MimeType}"/>
+                            <ObjectAttribute id="columnDatestampValue" text="{ path: 'fileList>Datestamp', type: 'sap.ui.model.type.Date', formatOptions: { style: 'medium' } }" />
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+        </content>
+    </Page>
+</mvc:View>
