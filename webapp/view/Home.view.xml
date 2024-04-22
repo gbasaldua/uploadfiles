@@ -1,6 +1,7 @@
 <mvc:View controllerName="gbas.developer.uploadfiles.controller.Home"
     xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
-    xmlns="sap.m">
+    xmlns="sap.m"
+	xmlns:u="sap.ui.unified">
     <Page id="page" title="{i18n>title}">
         <content>
         	<Table 
@@ -12,16 +13,13 @@
 			>
 				<headerToolbar>
 					<OverflowToolbar id="tableToolbar">
-						<Title id="searchToolbarTitle" text="{i18n>searchToolbarTitle}"/>
+						<Title id="toolbarTitle" text="{i18n>toolbarTitle}"/>
+						<u:FileUploader id="idFileUploader" width="30rem" sameFilenameAllowed="false" placeholder="{i18n>phFile}" style="Emphasized" useMultipart="false" uploadComplete="onUploadComplete" />
+						<Button id="uploadButton" text="{i18n>buttonUploadFile}" press="onUploadFile"/>
 						<ToolbarSpacer id="toolbarSpacer01"/>
-						<Button id="newFileButton" text="{i18n>buttonNewFile}" press="onNewFile"/>
 						<Button id="refreshButton" text="{i18n>buttonRefresh}" press="onRefresh"/>
-						<Button id="downloadButton" text="{i18n>buttonDownload}" press="onDownload"/>
+						<Button id="downloadButton" text="{i18n>buttonDownload}" press="onDownloadFile"/>
 						<Button id="downloadZipButton" text="{i18n>buttonDownloadZIP}" press="onDownloadZip"/>
-						<ToolbarSpacer id="toolbarSpacer02"/>
-						<SearchField id="searchFile" width="20%" search="onSearch"/>
-						<Button id="sortButton" tooltip="{i18n>tooltipSort}" icon="sap-icon://sort" press="onSort"/>
-						<Button id="groupButton" tooltip="{i18n>tooltipGroup}" icon="sap-icon://group-2" press="onGroup"/>
 					</OverflowToolbar>
 				</headerToolbar>
 				<columns>
