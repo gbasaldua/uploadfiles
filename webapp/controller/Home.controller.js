@@ -17,10 +17,10 @@ sap.ui.define([
             formatter: formatter,
 
             onInit: function () {
-                var oRouter = UIComponent.getRouterFor(this);
+                //var oRouter = UIComponent.getRouterFor(this);
 
                 //   Se actualizan los datos de la lista de pedidos
-                oRouter.getRoute("RouteHome").attachPatternMatched(this.onRouteMatched, this);
+                //oRouter.getRoute("RouteHome").attachPatternMatched(this.onRouteMatched, this);
             },
 
             onRouteMatched: function () {
@@ -101,7 +101,8 @@ sap.ui.define([
 
             onDownloadFile: function () {
                 const oItem= this.getView().byId("idFilesTable").getSelectedItem();
-                const oFile = oItem.getBindingContext("fileList").getObject();
+                //const oFile = oItem.getBindingContext("fileList").getObject();
+                const oFile = oItem.getBindingContext().getObject();
 
                 const oBusy = new sap.m.BusyDialog();
                 const uriFileValue = Model.createFileUri('/FileSet', oFile.Id);
