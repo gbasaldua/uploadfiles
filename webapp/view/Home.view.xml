@@ -7,7 +7,7 @@
         	<Table 
 				id="idFilesTable"
                 mode="SingleSelect"
-				items="{/FileSet}"
+				items="{fileList>/results}"
 				growing="true"
 				growingThreshold="25"
 			>
@@ -39,10 +39,10 @@
 				<items>
 					<ColumnListItem id="tableItems">
 						<cells>
-							<ObjectIdentifier id="columnIdValue" title="{Id}"/>
-							<Text id="columnFilenameValue" text="{Filename}"/>
-							<Text id="columnMimeTypeValue" text="{MimeType}"/>
-                            <ObjectAttribute id="columnDatestampValue" text="{ path: 'Datestamp', type: 'sap.ui.model.type.Date', formatOptions: { style: 'medium' } }" />
+							<ObjectIdentifier id="columnIdValue" title="{fileList>Id}"/>
+							<Text id="columnFilenameValue" text="{fileList>Filename}"/>
+							<Text id="columnMimeTypeValue" text="{fileList>MimeType}"/>
+                            <ObjectAttribute id="columnDatestampValue" text="{ path: 'fileList>Datestamp', formatter: '.formatter.formatDate' }" />
 						</cells>
 					</ColumnListItem>
 				</items>
