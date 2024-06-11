@@ -110,6 +110,12 @@ sap.ui.define([
                     this.getOwnerComponent().getModel().sServiceUrl
                 );
 
+
+                //   Se agrega un parámetro header custom
+                oModelFileSet.setHeaders({
+                    "id_po" : "2000000098"
+                });
+
                 oBusy.open();
 
                 //   Se realiza el llamado a la uri de descarga del archivo
