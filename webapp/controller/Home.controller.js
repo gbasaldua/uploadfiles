@@ -17,10 +17,10 @@ sap.ui.define([
             formatter: formatter,
 
             onInit: function () {
-                //var oRouter = UIComponent.getRouterFor(this);
+                var oRouter = UIComponent.getRouterFor(this);
 
                 //   Se actualizan los datos de la lista de pedidos
-                //oRouter.getRoute("RouteHome").attachPatternMatched(this.onRouteMatched, this);
+                oRouter.getRoute("RouteHome").attachPatternMatched(this.onRouteMatched, this);
             },
 
             onRouteMatched: function () {
@@ -30,12 +30,10 @@ sap.ui.define([
             },
 
             getViewData: function () {
-                const uriFileSet = this.getOwnerComponent().getModel().sServiceUrl + '/FileSet';
-                const oModelFiles = Model.createFilesModel(uriFileSet);
+                const fileSetEnityName = '/FileSet';
 
-
-                //   Se actualiza el modelo de archivos
-                this.getView().setModel(oModelFiles, 'fileList');
+                //   Se obtiene la lista de archivos desde el sistema Backend
+                Model.setFileListModel(this, fileSetEnityName, 'fileList');
             },
 
             onRefresh: function () {
