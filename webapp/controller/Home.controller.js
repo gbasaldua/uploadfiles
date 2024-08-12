@@ -99,9 +99,7 @@ sap.ui.define([
 
             onDownloadFile: function () {
                 const oItem= this.getView().byId("idFilesTable").getSelectedItem();
-                //const oFile = oItem.getBindingContext("fileList").getObject();
-                const oFile = oItem.getBindingContext().getObject();
-
+                const oFile = oItem.getBindingContext('fileList').getObject();
                 const oBusy = new sap.m.BusyDialog();
                 const uriFileValue = Model.createFileUri('/FileSet', oFile.Id);
                 var oModelFileSet = new sap.ui.model.odata.ODataModel(
