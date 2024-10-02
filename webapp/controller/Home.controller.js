@@ -117,7 +117,7 @@ sap.ui.define([
             },
 
             addErrorMessages: function (errors) {
-                var oMessage, errorType, errorMessage, errorCode;
+                var oMessage, errorType, errorMessage, errorCode, messageType;
                 for (var j = 0; j < errors.length; j++) {
                     errorType = errors[j].querySelector("severity").textContent;
                     errorMessage = errors[j].querySelector("message").textContent;
@@ -125,15 +125,21 @@ sap.ui.define([
 
                     //   Sólo se muestran los mensajes de error que no sean el mensaje por default
                     // de 'Exception raised without specific error'
-                    //if (errorType === 'error' && errorCode !== '/IWBEP/CX_MGW_BUSI_EXCEPTION') {
-                    oMessage = new Message({
-                        message: errorMessage,
-                        type: MessageType.Error,
-                        processor: this.getView().getModel()
-                    });
+                    if (errorCode !== '/IWBEP/CX_MGW_BUSI_EXCEPTION') {
 
-                    sap.ui.getCore().getMessageManager().addMessages(oMessage);
-                    //}
+                        if (errorType === 'warning')
+                            messageType = MessageType.Warning;
+                        else
+                            messageType = MessageType.Error;
+
+                        oMessage = new Message({
+                            message: errorMessage,
+                            type: messageType,
+                            processor: this.getView().getModel()
+                        });
+
+                        sap.ui.getCore().getMessageManager().addMessages(oMessage);
+                    }
                 }
             },
 
