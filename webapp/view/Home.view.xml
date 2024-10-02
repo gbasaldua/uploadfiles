@@ -48,5 +48,18 @@
 				</items>
 			</Table>
         </content>
+        <!-- Mensajes de ejecución del proceso -->
+        <footer>
+            <Toolbar
+                id="otbFooter">
+                <Button
+                    id="idMessageDetail"
+                    icon="sap-icon://alert"
+                    text="{= ${message>/}.length }"
+                    visible="true"
+                    type="Emphasized"
+                    press="onMessageDetails" />
+            </Toolbar>
+        </footer>
     </Page>
 </mvc:View>
